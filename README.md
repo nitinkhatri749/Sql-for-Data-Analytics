@@ -40,10 +40,13 @@ Let's start with queries -
 
 1) Total Revenue(sales), average sales, minimum sales, maximum sales geneated till now-
 ```python
-select sum(sales) as "Total Revenue", avg(sales) as "Avg Sales", min(sales) as "Min Sales", max(sales) as "Max sales" from sales```
+select sum(sales) as "Total Revenue", avg(sales) as "Avg Sales", min(sales) as "Min Sales", max(sales) as "Max sales" from sales
+```
 
 2) Total profit, average, minimum, maximum profit till now-
+```python
 Similar to above query with minor modifications as per need
+```
 
 3) Top 5 cities with Maximum No. of customers
 ```python
@@ -84,7 +87,8 @@ Result-
 
 #### Note- To get this one thing we'll have to understand is that if we look into sales table, One customer can make an order(order_id) with multiple products(product_id) orderred.
 ```python
-select count(order_line) as "Total no. of products ordered", count(distinct product_id) as "Total no. of orders made" from sales```
+select count(order_line) as "Total no. of products ordered", count(distinct product_id) as "Total no. of orders made" from sales
+```
 Results-
 "Total no. of products ordered" - 9994, "Total no. of orders made" -	1862
 
