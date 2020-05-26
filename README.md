@@ -93,4 +93,81 @@ Results-
 "Total no. of products ordered" - 9994, "Total no. of orders made" -	1862
 
 
+8) Above 7the query further can be asked by manager to get all the data(Total no. of products ordered) ,and (Total no. of orders made) from a particular date to a particular date-
+from '2016-01-01' to '2016-12-01'- 
+```python
+select count(order_line) as "Total no. of products ordered", count(distinct product_id) as "Total no. of orders made" from sales where order_date between '2016-01-01' and '2016-12-01'
+```
 
+
+9) Number of Customers for age range between 31 and 40-
+```python
+select count(*) as "Total No. of customers" from customer where age between 31 and 40
+```
+
+10) Count No. of customers for each age-
+```python
+select age, count(age) as "Total No. of customers" from customer group by age order by age
+```
+
+
+11) TO get Total Expense, Total quantity of products sold, Total profit, Total Revenue for all the sales
+```python
+select (sum(sales)  - sum(profit))  as  "Total Expense",sum(quantity) as "Total quantity of products sold", sum(profit) "Total profit", sum(sales) as "Total Revenue" from sales
+```
+
+
+12) To get age and respective total profit of all time. This gives - Age which orders maximum no. of orders(can also be shown on histogram for visualization).
+```python
+select age, sum(profit) as "Total Profit" from customer as a left join sales as b on a.customer_id = b.customer_id group by age order by sum(profit) desc
+```
+
+
+13) TO get total profit and average profit for given condition-
+age group divided into - 10-20, 20-30, 30-40, 40-50, 50-60, 60-70
+```python
+select age_dif, sum(profit) as "Total Profit", avg(profit) as "Average profit" from 
+(select case when age between 10 and 20 then '10-20' when age between 20 and 30 then '20-30' when age between 30 and 40 then '30-40'
+when age between 40 and 50 then '40-50' when age between 50 and 60 then '50-60' else '60-70' end as age_dif , a.age, b.profit from customer as a 
+right join sales b on a.customer_id = b.customer_id )as U
+group by age_dif order by sum(profit) desc
+```
+Result-
+age_dif Total Profit        Average profit
+"60-70"	76092.14320000002	  36.39031238641799
+"20-30"	54759.84040000009  	33.24823339404984
+"40-50"	52922.588	          26.905230299949164
+"50-60"	41789.160299999974	24.127690704387977
+"30-40"	41340.23890000004	  22.190144337090736
+"10-20"	19493.050900000027	28.087969596541825
+
+
+14) To get the total No. of products ordered grouped with age_dif-
+```python
+select age_dif, count(order_line) as "Total number of ordered products" from 
+(select case when age between 10 and 20 then '10-20' when age between 20 and 30 then '20-30' when age between 30 and 40 then '30-40'
+when age between 40 and 50 then '40-50' when age between 50 and 60 then '50-60' else '60-70' end as age_dif , a.age, b.order_line from customer as a 
+roght join sales b on a.customer_id = b.customer_id ) as X
+group by age_dif order by count(order_line) desc
+```
+Results-
+age_dif Total number of ordered products
+"60-70"	2091
+"40-50"	1967
+"30-40"	1863
+"50-60"	1732
+"20-30"	1647
+
+
+15) Region with maximum profit-
+```python
+select region, sum(profit) from customer as a right join sales as b on a.customer_id = b.customer_id group by region order by sum(profit) desc
+```
+Region    Total Profit
+"West"	  98008.22490000006
+"East"	  94604.31210000008
+"Central"	63609.34900000003
+"South"	  30175.13570000007
+
+
+16) 
