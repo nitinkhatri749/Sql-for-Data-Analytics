@@ -56,10 +56,10 @@ select city, count(customer_id) from customer group by city order by count(custo
 4) Top 5 states, country with maximum No. of customers-
 Similar to above query with minor modifications as per need
 result- 
-"New York City"
-"Los Angeles"
-"Philadelphia"
-"San Francisco"
+"New York City",
+"Los Angeles",
+"Philadelphia",
+"San Francisco",
 "Seattle"
 
 5) Region wise Customers distribution-
@@ -68,20 +68,22 @@ select region, count(customer_id) from customer group by region order by count(c
 ```
 From above we get, West region has maximum no. of customers and South has least.
 Results-
+```python
 "West" -	255
 "East" -	220
 "Central" -	184
 "South" -	134
-
+```
 6) Segment wise Customer distribution-
 ```python
 select segment, count(customer_id) from customer group by segment order by count(customer_id) desc
 ```
 Result-
+```python
 "Consumer" -	409
 "Corporate" -	236
 "Home Office" -	148
-
+```
 
 7) Toral No. of orders, Total no. of products ordered
 
