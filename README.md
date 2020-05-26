@@ -39,13 +39,16 @@ product_id(Table sales)
 Let's start with queries -
 
 1) Total Revenue(sales), average sales, minimum sales, maximum sales geneated till now-
-```select sum(sales) as "Total Revenue", avg(sales) as "Avg Sales", min(sales) as "Min Sales", max(sales) as "Max sales" from sales```
+```python
+select sum(sales) as "Total Revenue", avg(sales) as "Avg Sales", min(sales) as "Min Sales", max(sales) as "Max sales" from sales```
 
 2) Total profit, average, minimum, maximum profit till now-
 Similar to above query with minor modifications as per need
 
 3) Top 5 cities with Maximum No. of customers
-```select city, count(customer_id) from customer group by city order by count(customer_id) desc limit 5```
+```python
+select city, count(customer_id) from customer group by city order by count(customer_id) desc limit 5
+```
 
 4) Top 5 states, country with maximum No. of customers-
 Similar to above query with minor modifications as per need
@@ -57,7 +60,9 @@ result-
 "Seattle"
 
 5) Region wise Customers distribution-
-```select region, count(customer_id) from customer group by region order by count(customer_id) desc```
+```python
+select region, count(customer_id) from customer group by region order by count(customer_id) desc
+```
 From above we get, West region has maximum no. of customers and South has least.
 Results-
 "West" -	255
@@ -66,7 +71,9 @@ Results-
 "South" -	134
 
 6) Segment wise Customer distribution-
-```select segment, count(customer_id) from customer group by segment order by count(customer_id) desc```
+```python
+select segment, count(customer_id) from customer group by segment order by count(customer_id) desc
+```
 Result-
 "Consumer" -	409
 "Corporate" -	236
@@ -76,7 +83,8 @@ Result-
 7) Toral No. of orders, Total no. of products ordered
 
 #### Note- To get this one thing we'll have to understand is that if we look into sales table, One customer can make an order(order_id) with multiple products(product_id) orderred.
-```select count(order_line) as "Total no. of products ordered", count(distinct product_id) as "Total no. of orders made" from sales```
+```python
+select count(order_line) as "Total no. of products ordered", count(distinct product_id) as "Total no. of orders made" from sales```
 Results-
 "Total no. of products ordered" - 9994, "Total no. of orders made" -	1862
 
