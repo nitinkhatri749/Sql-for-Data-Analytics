@@ -136,12 +136,12 @@ group by age_dif order by sum(profit) desc
 ```
 Result-
 ```python
-age_dif Total Profit        Average profit
-"60-70"	76092.14320000002	  36.39031238641799
+age_dif Total Profit        	Average profit
+"60-70"	76092.14320000002	36.39031238641799
 "20-30"	54759.84040000009  	33.24823339404984
-"40-50"	52922.588	          26.905230299949164
+"40-50"	52922.588	        26.905230299949164
 "50-60"	41789.160299999974	24.127690704387977
-"30-40"	41340.23890000004	  22.190144337090736
+"30-40"	41340.23890000004	22.190144337090736
 "10-20"	19493.050900000027	28.087969596541825
 ```
 
@@ -169,11 +169,11 @@ select region, sum(profit) from customer as a right join sales as b on a.custome
 ```
 Results-
 ```python
-Region    Total Profit
-"West"	  98008.22490000006
-"East"	  94604.31210000008
+Region    	Total Profit
+"West"	  	98008.22490000006
+"East"	  	94604.31210000008
 "Central"	63609.34900000003
-"South"	  30175.13570000007
+"South"	  	30175.13570000007
 ```
 
 16) Average time, Max time, and Min time taken by Shipping Modes-
@@ -182,10 +182,11 @@ select ship_mode, avg(age(ship_date, order_date)) as "Average Time Taken", max(a
 ```
 Results-
 ```python
-"Same Day"	"01:03:38.78453"	"1 day"	"00:00:00"
-"First Class"	"2 days 04:23:05.695709"	"4 days"	"1 day"
-"Second Class"	"3 days 05:42:47.197943"	"5 days"	"1 day"
-"Standard Class"	"5 days 00:09:24.61126"	"7 days"	"3 days"
+ship_mode		Average Time Taken		Max Time Taken	Min Time Taken
+"Same Day"		"01:03:38.78453"		"1 day"		"00:00:00"
+"First Class"		"2 days 04:23:05.695709"	"4 days"	"1 day"
+"Second Class"		"3 days 05:42:47.197943"	"5 days"	"1 day"
+"Standard Class"	"5 days 00:09:24.61126"		"7 days"	"3 days"
 ```
 
 17) To get all the data into single table unsing joins, with age_diff, month column which can be used for Full analysis/Dashboard-
