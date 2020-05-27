@@ -44,9 +44,7 @@ select sum(sales) as "Total Revenue", avg(sales) as "Avg Sales", min(sales) as "
 ```
 
 2) Total profit, average, minimum, maximum profit till now-
-```python
 Similar to above query with minor modifications as per need
-```
 
 3) Top 5 cities with Maximum No. of customers
 ```python
@@ -56,12 +54,13 @@ select city, count(customer_id) from customer group by city order by count(custo
 4) Top 5 states, country with maximum No. of customers-
 Similar to above query with minor modifications as per need
 result- 
+```python
 "New York City",
 "Los Angeles",
 "Philadelphia",
 "San Francisco",
 "Seattle"
-
+```
 5) Region wise Customers distribution-
 ```python
 select region, count(customer_id) from customer group by region order by count(customer_id) desc
@@ -92,8 +91,9 @@ Result-
 select count(order_line) as "Total no. of products ordered", count(distinct product_id) as "Total no. of orders made" from sales
 ```
 Results-
+```python
 "Total no. of products ordered" - 9994, "Total no. of orders made" -	1862
-
+```
 
 8) Above 7the query further can be asked by manager to get all the data(Total no. of products ordered) ,and (Total no. of orders made) from a particular date to a particular date-
 from '2016-01-01' to '2016-12-01'- 
@@ -135,6 +135,7 @@ right join sales b on a.customer_id = b.customer_id )as U
 group by age_dif order by sum(profit) desc
 ```
 Result-
+```python
 age_dif Total Profit        Average profit
 "60-70"	76092.14320000002	  36.39031238641799
 "20-30"	54759.84040000009  	33.24823339404984
@@ -142,7 +143,7 @@ age_dif Total Profit        Average profit
 "50-60"	41789.160299999974	24.127690704387977
 "30-40"	41340.23890000004	  22.190144337090736
 "10-20"	19493.050900000027	28.087969596541825
-
+```
 
 14) To get the total No. of products ordered grouped with age_dif-
 ```python
@@ -153,23 +154,55 @@ roght join sales b on a.customer_id = b.customer_id ) as X
 group by age_dif order by count(order_line) desc
 ```
 Results-
+```python
 age_dif Total number of ordered products
 "60-70"	2091
 "40-50"	1967
 "30-40"	1863
 "50-60"	1732
 "20-30"	1647
-
+```
 
 15) Region with maximum profit-
 ```python
 select region, sum(profit) from customer as a right join sales as b on a.customer_id = b.customer_id group by region order by sum(profit) desc
 ```
+Results-
+```python
 Region    Total Profit
 "West"	  98008.22490000006
 "East"	  94604.31210000008
 "Central"	63609.34900000003
 "South"	  30175.13570000007
+```
+
+16) Average time, Max time, and Min time taken by Shipping Modes-
+```python
+select ship_mode, avg(age(ship_date, order_date)) as "Average Time Taken", max(age(ship_date, order_date)) as "Max Time Taken", min(age(ship_date, order_date)) as "Min Time Taken"  from sales group by ship_mode order by avg(age(ship_date, order_date))
+```
+Results-
+```python
+"Same Day"	"01:03:38.78453"	"1 day"	"00:00:00"
+"First Class"	"2 days 04:23:05.695709"	"4 days"	"1 day"
+"Second Class"	"3 days 05:42:47.197943"	"5 days"	"1 day"
+"Standard Class"	"5 days 00:09:24.61126"	"7 days"	"3 days"
+```
+
+17) To get all the data into single table unsing joins, with age_diff, month column which can be used for Full analysis/Dashboard-
+```python
+create table final as (select ROW_NUMBER() OVER (ORDER BY 1) AS id, 
+					  substring(to_char(order_date,'yyyy-mm-dd'),6,2) as month ,
+					  segment, country, city, state, region, category, sub_category, product_name, order_date, ship_date, ship_mode, sales, quantity, discount, profit,
+					  case when age between 10 and 20 then '10-20' when age between 20 and 30 then '20-30' when age between 30 and 40 then '30-40'
+	when age between 40 and 50 then '40-50' when age between 50 and 60 then '50-60' else '60-70' end as age_cat  from customer as a left join sales as b on a.customer_id = b.customer_id left join product as c on b.product_id = c.product_id)
+```
+```python
+select * from final
+```
+The above query will be used for getting all the information together in single table named final.
 
 
-16) 
+
+
+
+
