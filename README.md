@@ -18,9 +18,9 @@ Copy Table_name from 'Path of file' delimiter ','
 Once all the tables have been copied or directly extracted into ypour Database using any tool, we can look into our data.
 
 There are three tables namely- 
-1) customer
-2) sales
-3) product
+#### 1) customer
+#### 2) sales
+#### 3) product
 
 Table customer have necessary details about a customer as- customer_id,  customer name, country, state, age, city, region, segment
 sales includes - order_line, order_id, order_date, ship_date, ship_mode, customer_id, product_id, sales, quantity, discount, profit
@@ -36,7 +36,7 @@ foreign keys -
 customeer_id(Table sales)
 product_id(Table sales)
 
-Let's start with queries -
+#### Let's start with queries -
 
 1) Total Revenue(sales), average sales, minimum sales, maximum sales geneated till now-
 ```python
