@@ -30,9 +30,11 @@ There are three tables namely-
 #### 2) sales
 #### 3) product
 
-Table customer have necessary details about a customer as- customer_id,  customer name, country, state, age, city, region, segment
-sales includes - order_line, order_id, order_date, ship_date, ship_mode, customer_id, product_id, sales, quantity, discount, profit
-product includes - product_id, category, sub_category, product_name
+Table customer have necessary details about a customer as- customer_id,  customer name, country, state, age, city, region, segment.
+
+sales includes - order_line, order_id, order_date, ship_date, ship_mode, customer_id, product_id, sales, quantity, discount, profit.
+
+product includes - product_id, category, sub_category, product_name.
 
 
 primary keys - 
