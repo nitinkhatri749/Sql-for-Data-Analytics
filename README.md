@@ -46,6 +46,8 @@ foreign keys -
 customeer_id(Table sales)
 product_id(Table sales)
 
+As considering the foreign keys in sales, the order of copyng from csv files should be - customer table, product, & then sales tables. 
+
 #### Let's start with queries -
 
 1) Total Revenue(sales), average sales, minimum sales, maximum sales geneated till now-
