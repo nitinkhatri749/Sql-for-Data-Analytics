@@ -48,6 +48,9 @@ product_id(Table sales)
 
 As considering the foreign keys in sales, the order of copyng from csv files should be - customer table, product, & then sales tables. 
 
+While copying if this error - 
+ERROR: could not open file "yourpath\file.csv" for reading: Permission denied HINT: COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy. Then All that is to be done is: Go to Properties of that particular file by right clicking on it. Then, go to Security tab of the displayed Properties dialog box. Click on Edit option. Permissions dialog box appears, then click on Add button. Type 'Everyone' (without apostrophes) in the "Enter the object names to select" description box and click on OK button. Then, make sure all the checkboxes of "Permissions for Everyone" are selected by just ticking the "Full Control" check box to allow the control access without any restriction. Then, Apply and OK all the tabs to apply all the changes done.
+
 #### Let's start with queries -
 
 1) Total Revenue(sales), average sales, minimum sales, maximum sales geneated till now-
